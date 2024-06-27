@@ -9,6 +9,8 @@ import com.jasper.oauth.oauthdashboard.model.account.AccountListResponse;
 import com.jasper.oauth.oauthdashboard.model.account.AccountUpdateRequest;
 import com.jasper.oauth.oauthdashboard.model.account.CheckPermissionRequest;
 import com.jasper.oauth.oauthdashboard.service.AccountService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@Tag(name = "Account", description = "Account management")
 @RestController
 @RequestMapping(value = "oauth/api/account")
 public class AccountController {
@@ -28,6 +31,7 @@ public class AccountController {
     this.accountService = accountService;
   }
 
+  @Operation(summary = "Get account list", description = "Get account list in pages")
   @GetMapping("v1/list")
   public Object getAccountList(PageParam pageParam) {
     try {
@@ -38,6 +42,7 @@ public class AccountController {
     }
   }
 
+  @Operation(summary = "Get account detail", description = "Get account detail by account id")
   @GetMapping("v1/{accountId}/detail")
   public Object getAccountDetail(@PathVariable("accountId") Integer accountId) {
     try {
@@ -48,6 +53,7 @@ public class AccountController {
     }
   }
 
+  @Operation(summary = "Update account", description = "Update account by account id")
   @PutMapping("v1/{accountId}/update")
   public Object updateAccount(
       @PathVariable("accountId") Integer accountId, @RequestBody AccountUpdateRequest request) {
@@ -59,6 +65,7 @@ public class AccountController {
     }
   }
 
+  @Operation(summary = "Create account", description = "Create account")
   @PostMapping("v1/create")
   public Object createAccount(@RequestBody AccountCreateRequest request) {
     try {
@@ -79,6 +86,7 @@ public class AccountController {
     }
   }
 
+  @Operation(summary = "Simulate login", description = "Simulate login by account and client code")
   @GetMapping("v1/simulateLogin")
   public Object simulateLogin(String account, String clientCode) {
     try {
@@ -88,6 +96,9 @@ public class AccountController {
     }
   }
 
+  @Operation(
+      summary = "Check permission",
+      description = "Check permission by account, client code, resource code and scopes")
   @PostMapping("v1/checkPermission")
   public Object checkPermission(@RequestBody CheckPermissionRequest request) {
     try {

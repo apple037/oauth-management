@@ -98,6 +98,7 @@ public class ClientService {
 
   /**
    * Get the client detail by client id
+   *
    * @param clientId
    * @return
    */
@@ -135,7 +136,7 @@ public class ClientService {
         clientDataAccessService.findByClientCode(request.getClientCode());
     if (clientOptional.isPresent()) {
       throw new IllegalArgumentException("Client code already exists");
-      }
+    }
     // build the client entity
     OauthClient client = new OauthClient();
     buildEntityByRequest(client, request);
@@ -300,16 +301,19 @@ public class ClientService {
 
   /**
    * Build the client entity by request
+   *
    * @param client
    * @param request
    * @return
    */
-  private OauthClient buildEntityByRequest(OauthClient client, ClientCreateAndUpdateRequest request) {
+  private OauthClient buildEntityByRequest(
+      OauthClient client, ClientCreateAndUpdateRequest request) {
     // build the client entity
     client.setClientCode(request.getClientCode());
     client.setClientSecret(SecretUtil.encodePassword(request.getClientSecret()));
     client.setServiceCode(request.getServiceCode());
-    client.setWebServerRedirectUrl(request.getWebServerRedirectUri() == null ? "" : request.getWebServerRedirectUri());
+    client.setWebServerRedirectUrl(
+        request.getWebServerRedirectUri() == null ? "" : request.getWebServerRedirectUri());
     client.setSystemCode(request.getSystemCode());
     client.setAccessTokenValidity(request.getAccessTokenValidity().intValue());
     client.setRefreshTokenValidity(request.getRefreshTokenValidity().intValue());
@@ -323,6 +327,7 @@ public class ClientService {
 
   /**
    * Check the additional information format
+   *
    * @param additionalInformation
    */
   private void checkAdditionalInformation(String additionalInformation) {
@@ -330,14 +335,14 @@ public class ClientService {
     try {
       Object obj = JSON.parse(additionalInformation);
       log.debug("obj: {}", obj);
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       throw new IllegalArgumentException("The additional information format is not correct");
     }
   }
 
   /**
    * Create the client grant type
+   *
    * @param grantTypeList
    * @param clientId
    */
@@ -362,7 +367,8 @@ public class ClientService {
           grantTypeSet.add(clientGrantTypes);
         });
     if (!grantTypeSet.isEmpty()) {
-      Collection<OauthClientGrantTypes> savedSet = clientGrantTypesDataAccessService.saveAll(grantTypeSet);
+      Collection<OauthClientGrantTypes> savedSet =
+          clientGrantTypesDataAccessService.saveAll(grantTypeSet);
       if (savedSet.size() != grantTypeSet.size()) {
         throw new IllegalArgumentException("Create client grant type failed");
       }
@@ -371,6 +377,7 @@ public class ClientService {
 
   /**
    * Create the client resource
+   *
    * @param resourceCodeList
    * @param clientId
    */
@@ -384,7 +391,8 @@ public class ClientService {
     Set<OauthClientResource> resourceSet = new HashSet<>();
     resourceCodeList.forEach(
         resourceCode -> {
-          Optional<Resource> resourceOptional = Optional.ofNullable(resourceCodeMap.get(resourceCode));
+          Optional<Resource> resourceOptional =
+              Optional.ofNullable(resourceCodeMap.get(resourceCode));
           if (resourceOptional.isEmpty()) {
             throw new IllegalArgumentException("Resource code not exists");
           }
@@ -398,7 +406,8 @@ public class ClientService {
           resourceSet.add(clientResource);
         });
     if (!resourceSet.isEmpty()) {
-      Collection<OauthClientResource> savedSet = clientResourceDataAccessService.saveAll(resourceSet);
+      Collection<OauthClientResource> savedSet =
+          clientResourceDataAccessService.saveAll(resourceSet);
       if (savedSet.size() != resourceSet.size()) {
         throw new IllegalArgumentException("Create client resource failed");
       }

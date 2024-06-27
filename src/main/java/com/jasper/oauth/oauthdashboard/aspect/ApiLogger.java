@@ -1,8 +1,6 @@
 package com.jasper.oauth.oauthdashboard.aspect;
 
-import jakarta.servlet.http.HttpServletRequest;
 import java.lang.annotation.Annotation;
-import java.util.Map;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
@@ -16,8 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 
 // 紀錄Controller API的呼叫
 @Aspect

@@ -26,7 +26,7 @@ public class Result<T> {
         .build();
   }
 
-  public static <T>Result<T> success(T data) {
+  public static <T> Result<T> success(T data) {
     return Result.<T>builder()
         .msgLevel(MsgLevelEnum.SUCCESS.getLevel())
         .msgCode(MsgCodeEnum.SUCCESS.getCode())
@@ -35,7 +35,8 @@ public class Result<T> {
         .build();
   }
 
-  public static <T> Result<T> customSuccess(MsgLevelEnum msgLevel, String msgCode, String msg, T data) {
+  public static <T> Result<T> customSuccess(
+      MsgLevelEnum msgLevel, String msgCode, String msg, T data) {
     return Result.<T>builder()
         .msgLevel(msgLevel.getLevel())
         .msgCode(msgCode)

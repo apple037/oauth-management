@@ -17,16 +17,22 @@ public class AccountRole {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id")
   private Integer id;
+
   @Column(name = "account_id")
   private Integer accountId;
+
   @Column(name = "role_id")
   private Integer roleId;
+
   @Column(name = "created_by")
   private Integer createdBy;
+
   @Column(name = "created_date")
   private LocalDateTime createdDate;
+
   @Column(name = "last_modified_by")
   private Integer lastModifiedBy;
+
   @Column(name = "last_modified_date")
   private LocalDateTime lastModifiedDate;
 }

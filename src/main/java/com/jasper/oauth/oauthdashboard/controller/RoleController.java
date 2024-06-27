@@ -5,6 +5,8 @@ import com.jasper.oauth.oauthdashboard.model.Result;
 import com.jasper.oauth.oauthdashboard.model.role.RoleCreateRequest;
 import com.jasper.oauth.oauthdashboard.model.role.RoleUpdateRequest;
 import com.jasper.oauth.oauthdashboard.service.RoleService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@Tag(name = "Role", description = "Role management")
 @RestController
 @RequestMapping("/oauth/api/role/")
 public class RoleController {
@@ -23,6 +26,7 @@ public class RoleController {
     this.roleService = roleService;
   }
 
+  @Operation(summary = "Get role list", description = "Get role list in pages")
   @GetMapping("v1/list")
   public Object list(PageParam pageParam) {
     try {
@@ -32,6 +36,7 @@ public class RoleController {
     }
   }
 
+  @Operation(summary = "Get role detail", description = "Get role detail by role id")
   @GetMapping("v1/{roleId}/detail")
   public Object detail(@PathVariable("roleId") Integer roleId) {
     try {
@@ -41,6 +46,7 @@ public class RoleController {
     }
   }
 
+  @Operation(summary = "Create role", description = "Create role")
   @PostMapping("v1/create")
   public Object createRole(@RequestBody RoleCreateRequest request) {
     try {
@@ -51,6 +57,7 @@ public class RoleController {
     }
   }
 
+  @Operation(summary = "Update role", description = "Update role by role id")
   @PutMapping("v1/{roleId}/update")
   public Object update(
       @PathVariable(name = "roleId") Integer roleId, @RequestBody RoleUpdateRequest request) {
@@ -62,6 +69,7 @@ public class RoleController {
     }
   }
 
+  @Operation(summary = "Delete role", description = "Delete role by role id")
   @DeleteMapping("v1/{roleId}/delete")
   public Object delete(@PathVariable(name = "roleId") Integer roleId) {
     try {

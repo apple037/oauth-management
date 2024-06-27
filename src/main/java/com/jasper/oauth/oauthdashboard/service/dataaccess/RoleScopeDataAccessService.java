@@ -1,9 +1,7 @@
 package com.jasper.oauth.oauthdashboard.service.dataaccess;
 
 import com.jasper.oauth.oauthdashboard.dao.RoleScopeDao;
-import com.jasper.oauth.oauthdashboard.dao.ScopeDao;
 import com.jasper.oauth.oauthdashboard.entity.RoleScope;
-import com.jasper.oauth.oauthdashboard.entity.Scope;
 import java.util.Collection;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;

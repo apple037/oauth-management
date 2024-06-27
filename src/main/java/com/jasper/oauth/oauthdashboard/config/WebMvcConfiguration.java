@@ -10,11 +10,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @AllArgsConstructor
 public class WebMvcConfiguration implements WebMvcConfigurer {
 
-    private final MdcInterceptor mdcInterceptor;
+  private final MdcInterceptor mdcInterceptor;
 
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(mdcInterceptor);
-    }
-
+  @Override
+  public void addInterceptors(InterceptorRegistry registry) {
+    registry.addInterceptor(mdcInterceptor);
+  }
 }

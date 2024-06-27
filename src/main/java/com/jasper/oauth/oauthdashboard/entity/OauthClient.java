@@ -59,7 +59,4 @@ public class OauthClient {
 
   @Column(name = "system_code", nullable = false, length = 50)
   private String systemCode;
-
 }
-
-

@@ -12,7 +12,6 @@ public class ApplicationNoSecurity {
 
   @Bean
   public WebSecurityCustomizer webSecurityCustomizer() {
-    return (web) -> web.ignoring()
-        .requestMatchers(new AntPathRequestMatcher("/**"));
+    return (web) -> web.ignoring().requestMatchers(new AntPathRequestMatcher("/**"));
   }
 }

@@ -11,5 +11,4 @@ public class OauthDashboardApplication {
   public static void main(String[] args) {
     SpringApplication.run(OauthDashboardApplication.class, args);
   }
-
 }

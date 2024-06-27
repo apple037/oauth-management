@@ -14,8 +14,10 @@ import org.hibernate.validator.constraints.Length;
 public class ResourceCreateRequest {
   @NotBlank(message = "Resource code is required")
   private String code;
+
   @NotBlank(message = "Resource label is required")
   private String label;
+
   @Length(max = 300, message = "Resource description length exceeds 300 characters")
   private String description;
 }

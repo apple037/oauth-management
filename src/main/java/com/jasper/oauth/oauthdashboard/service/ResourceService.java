@@ -30,7 +30,8 @@ public class ResourceService {
   private final ClientResourceDataAccessService clientResourceDataAccessService;
   private final ClientDataAccessService clientDataAccessService;
 
-  public ResourceService(ResourceDataAccessService resourceDataAccessService,
+  public ResourceService(
+      ResourceDataAccessService resourceDataAccessService,
       ClientResourceDataAccessService clientResourceDataAccessService,
       ClientDataAccessService clientDataAccessService) {
     this.resourceDataAccessService = resourceDataAccessService;
@@ -42,6 +43,7 @@ public class ResourceService {
 
   /**
    * Get all resource list with pagination
+   *
    * @param pageParam
    * @return
    */
@@ -52,26 +54,31 @@ public class ResourceService {
       return Page.empty();
     }
     // Get all client resource list
-    Set<Integer> resourceIdList = resourcePage.getContent().stream().map(Resource::getId).collect(
-        Collectors.toSet());
-    List<OauthClientResource> clientResourceList = clientResourceDataAccessService.findAllByResourceIdIn(
-        resourceIdList);
-    HashMap<Integer, Integer> clientResourceCountMap = clientResourceList.stream().map(
-        OauthClientResource::getResourceId).collect(Collectors.toMap(resourceId -> resourceId, resourceId -> 1,
-        Integer::sum, HashMap::new));
-    return resourcePage.map(resource -> {
-      Integer clientResourceCount = clientResourceCountMap.getOrDefault(resource.getId(), 0);
-      return ResourceListResponse.builder()
-          .id(resource.getId())
-          .code(resource.getCode())
-          .label(resource.getLabel())
-          .clientCount(clientResourceCount)
-          .build();
-    });
+    Set<Integer> resourceIdList =
+        resourcePage.getContent().stream().map(Resource::getId).collect(Collectors.toSet());
+    List<OauthClientResource> clientResourceList =
+        clientResourceDataAccessService.findAllByResourceIdIn(resourceIdList);
+    HashMap<Integer, Integer> clientResourceCountMap =
+        clientResourceList.stream()
+            .map(OauthClientResource::getResourceId)
+            .collect(
+                Collectors.toMap(
+                    resourceId -> resourceId, resourceId -> 1, Integer::sum, HashMap::new));
+    return resourcePage.map(
+        resource -> {
+          Integer clientResourceCount = clientResourceCountMap.getOrDefault(resource.getId(), 0);
+          return ResourceListResponse.builder()
+              .id(resource.getId())
+              .code(resource.getCode())
+              .label(resource.getLabel())
+              .clientCount(clientResourceCount)
+              .build();
+        });
   }
 
   /**
    * Get resource detail by resource id
+   *
    * @param resourceId
    * @return
    */
@@ -84,12 +91,17 @@ public class ResourceService {
     Resource resource = resourceOptional.get();
     // Find all client resource list
     List<String> clientCodeList = new ArrayList<>();
-    List<OauthClientResource> clientResourceList = clientResourceDataAccessService.findAllByResourceIdIn(List.of(resourceId));
+    List<OauthClientResource> clientResourceList =
+        clientResourceDataAccessService.findAllByResourceIdIn(List.of(resourceId));
     if (!clientResourceList.isEmpty()) {
-      Set<Integer> clientIdList = clientResourceList.stream().map(OauthClientResource::getClientId).collect(
-          Collectors.toSet());
-      clientCodeList = clientDataAccessService.findAllByClientIdIn(clientIdList).stream().map(
-          OauthClient::getClientCode).collect(Collectors.toList());
+      Set<Integer> clientIdList =
+          clientResourceList.stream()
+              .map(OauthClientResource::getClientId)
+              .collect(Collectors.toSet());
+      clientCodeList =
+          clientDataAccessService.findAllByClientIdIn(clientIdList).stream()
+              .map(OauthClient::getClientCode)
+              .collect(Collectors.toList());
     }
     // Build response
     return ResourceDetailResponse.builder()

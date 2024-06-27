@@ -19,6 +19,7 @@ public class ResourceDataAccessService {
 
   /**
    * Find all resources by resource id list
+   *
    * @param resourceIdList
    * @return
    */

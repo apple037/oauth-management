@@ -1,7 +1,6 @@
 package com.jasper.oauth.oauthdashboard.dao;
 
 import com.jasper.oauth.oauthdashboard.entity.OauthClient;
-import com.jasper.oauth.oauthdashboard.entity.Scope;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;

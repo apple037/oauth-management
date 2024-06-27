@@ -10,7 +10,7 @@ This project is used for oauth permission management.
 
 ## TODO
 ### Document
-- [ ] Add Swagger
+- [x] Add [Swagger](http://localhost:10002/oauthdashboard/swagger-ui/index.html)
 ### Account
 - [x] list account
 - [x] create account

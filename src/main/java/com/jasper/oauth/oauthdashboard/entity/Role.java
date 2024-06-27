@@ -1,7 +1,7 @@
 package com.jasper.oauth.oauthdashboard.entity;
-import lombok.Data;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import lombok.Data;
 
 @Entity
 @Table(name = "role")

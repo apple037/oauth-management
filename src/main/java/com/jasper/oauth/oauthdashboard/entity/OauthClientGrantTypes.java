@@ -1,10 +1,10 @@
 package com.jasper.oauth.oauthdashboard.entity;
 
+import jakarta.persistence.*;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-import lombok.Data;
-import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import lombok.Data;
 
 @Entity
 @Table(name = "oauth_client_grant_types")

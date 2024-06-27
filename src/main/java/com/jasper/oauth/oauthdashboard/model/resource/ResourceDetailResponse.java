@@ -1,6 +1,5 @@
 package com.jasper.oauth.oauthdashboard.model.resource;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import lombok.AllArgsConstructor;

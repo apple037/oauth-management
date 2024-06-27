@@ -1,4 +1,5 @@
 package com.jasper.oauth.oauthdashboard.entity;
+
 import lombok.Data;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
@@ -21,7 +22,10 @@ public class OauthClientScope {
   @Column(name = "created_by", nullable = false, columnDefinition = "int default 0")
   private int createdBy;
 
-  @Column(name = "created_date", nullable = false, columnDefinition = "datetime default CURRENT_TIMESTAMP")
+  @Column(
+      name = "created_date",
+      nullable = false,
+      columnDefinition = "datetime default CURRENT_TIMESTAMP")
   private LocalDateTime createdDate;
 
   @Column(name = "last_modified_by", columnDefinition = "int default 0")

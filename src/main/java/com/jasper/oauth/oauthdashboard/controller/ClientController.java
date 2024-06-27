@@ -4,6 +4,8 @@ import com.jasper.oauth.oauthdashboard.model.PageParam;
 import com.jasper.oauth.oauthdashboard.model.Result;
 import com.jasper.oauth.oauthdashboard.model.client.ClientCreateAndUpdateRequest;
 import com.jasper.oauth.oauthdashboard.service.ClientService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@Tag(name = "Client", description = "Client management")
 @RestController
 @RequestMapping("oauth/api/client/")
 public class ClientController {
@@ -23,6 +26,7 @@ public class ClientController {
     this.clientService = clientService;
   }
 
+  @Operation(summary = "Get client list", description = "Get client list in pages")
   @GetMapping("v1/list")
   public Object list(PageParam pageParam) {
     try {
@@ -32,6 +36,7 @@ public class ClientController {
     }
   }
 
+  @Operation(summary = "Get client detail", description = "Get client detail by client id")
   @GetMapping("v1/{clientId}/detail")
   public Object detail(@PathVariable(name = "clientId") Integer clientId) {
     try {
@@ -41,6 +46,7 @@ public class ClientController {
     }
   }
 
+  @Operation(summary = "Create client", description = "Create client")
   @PostMapping("v1/create")
   public Object create(@RequestBody @Valid ClientCreateAndUpdateRequest request) {
     try {
@@ -50,8 +56,11 @@ public class ClientController {
     }
   }
 
+  @Operation(summary = "Update client", description = "Update client by client id")
   @PutMapping("v1/{clientId}/update")
-  public Object update(@PathVariable(name = "clientId") Integer clientId, @RequestBody @Valid ClientCreateAndUpdateRequest request) {
+  public Object update(
+      @PathVariable(name = "clientId") Integer clientId,
+      @RequestBody @Valid ClientCreateAndUpdateRequest request) {
     try {
       // TODO validation should be different for create and update
       clientService.updateClient(clientId, request);
@@ -61,6 +70,7 @@ public class ClientController {
     }
   }
 
+  @Operation(summary = "Delete client", description = "Delete client by client id")
   @DeleteMapping("v1/{clientId}/delete")
   public Object delete(@PathVariable(name = "clientId") Integer clientId) {
     try {

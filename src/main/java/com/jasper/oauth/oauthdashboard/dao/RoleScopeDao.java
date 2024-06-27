@@ -1,7 +1,5 @@
 package com.jasper.oauth.oauthdashboard.dao;
 
-import com.jasper.oauth.oauthdashboard.entity.AccountRole;
-import com.jasper.oauth.oauthdashboard.entity.Role;
 import com.jasper.oauth.oauthdashboard.entity.RoleScope;
 import java.util.Collection;
 import java.util.List;
