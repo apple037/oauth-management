@@ -1,0 +1,576 @@
+{
+	"info": {
+		"_postman_id": "0708474d-9535-4b3b-9b5f-eb2562c0af48",
+		"name": "Oauth dashbaord",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30733378"
+	},
+	"item": [
+		{
+			"name": "Account",
+			"item": [
+				{
+					"name": "Account list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/oauth/api/account/v1/list",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"oauth",
+								"api",
+								"account",
+								"v1",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Account detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/oauth/api/account/v1/1148/detail",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"oauth",
+								"api",
+								"account",
+								"v1",
+								"1148",
+								"detail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Account",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"enabled\":true,\n    \"locked\":false,\n    \"roles\":[\n        \"ROLE_GASH_USER_V0\",\n        \"ROLE_GASH_USER_V1\"\n    ],\n    \"additionalScopes\":[\n        \"sharedServices.readonly\"\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/oauth/api/account/v1/1148/update",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"oauth",
+								"api",
+								"account",
+								"v1",
+								"1148",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create account",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"ggininder2\",\n    \"password\":\"12345678\",\n    \"enabled\":true,\n    \"locked\":false,\n    \"roles\":[\n        \"ROLE_GASH_USER_V0\"\n    ],\n    \"additionalScopes\":[\n        \"sharedServices.readonly\"\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/oauth/api/account/v1/account",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"oauth",
+								"api",
+								"account",
+								"v1",
+								"account"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete account",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"isHardDelete\":false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/oauth/api/account/v1/1150/delete",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"oauth",
+								"api",
+								"account",
+								"v1",
+								"1150",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Simulate login",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/oauth/api/account/v1/simulateLogin?account=gemp_pm@gashpoint.com&clientCode=consumer_module",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"oauth",
+								"api",
+								"account",
+								"v1",
+								"simulateLogin"
+							],
+							"query": [
+								{
+									"key": "account",
+									"value": "gemp_pm@gashpoint.com"
+								},
+								{
+									"key": "clientCode",
+									"value": "consumer_module"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check permission",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"account\":\"gemp_pm@gashpoint.com\",\n    \"clientCode\":\"gbackend\",\n    \"resourceCode\":\"sharedServices_module\",\n    \"expectedScopes\":[\n        \"backend.readonly\",\n        \"sharedServices.readonly\"\n    ],\n    \"expectedRoles\":[\n        \"ROLE_GEMP_BACKEND_ADMIN\"\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/oauth/api/account/v1/checkPermission",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"oauth",
+								"api",
+								"account",
+								"v1",
+								"checkPermission"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Role",
+			"item": [
+				{
+					"name": "Get Role list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/oauth/api/role/v1/list",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"oauth",
+								"api",
+								"role",
+								"v1",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get role detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/oauth/api/role/v1/18/detail",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"oauth",
+								"api",
+								"role",
+								"v1",
+								"18",
+								"detail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create role",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"code\":\"ROLE_CLOWN2\",\n    \"label\":\"小丑🤡\",\n    \"scopeCodes\":[\n        \"consumer\"\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/oauth/api/role/v1/create",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"oauth",
+								"api",
+								"role",
+								"v1",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update role",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"code\":\"ROLE_CLOWN_ONLY\",\n    \"label\":\"你只是個小丑🤡\",\n    \"scopeCodes\":[\n        \"consumer.readonly\"\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/oauth/api/role/v1/18/update",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"oauth",
+								"api",
+								"role",
+								"v1",
+								"18",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete role",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/oauth/api/role/v1/19/delete",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"oauth",
+								"api",
+								"role",
+								"v1",
+								"19",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Client",
+			"item": [
+				{
+					"name": "Get client list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/oauth/api/client/v1/list",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"oauth",
+								"api",
+								"client",
+								"v1",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get client detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/oauth/api/client/v1/4/detail",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"oauth",
+								"api",
+								"client",
+								"v1",
+								"4",
+								"detail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create client",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"clientCode\":\"test_module\",\n    \"clientSecret\":\"123456\",\n    \"webServerRedirectUri\":\"\",\n    \"serviceCode\":\"SE001\",\n    \"contentCode\":\"\",\n    \"accessTokenValidity\":86400,\n    \"refreshTokenValidity\":3600,\n    \"additionalInformation\":\"{\\\"code\\\":\\\"testCode\\\"}\",\n    \"systemCode\":\"SYS001\",\n    \"grantTypeList\":[\n        \"password\",\n        \"refresh_token\"\n    ],\n    \"resourceCodeList\":[\n        \"consumer_module\",\n        \"sharedServices_module\"\n    ],\n    \"scopeCodeList\":[\n        \"consumer\",\n        \"consumer.readonly\"\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/oauth/api/client/v1/create",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"oauth",
+								"api",
+								"client",
+								"v1",
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Resource",
+			"item": [
+				{
+					"name": "Get resource lsit",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/oauth/api/resource/v1/list",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"oauth",
+								"api",
+								"resource",
+								"v1",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get resource detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/oauth/api/resource/v1/1/detail",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"oauth",
+								"api",
+								"resource",
+								"v1",
+								"1",
+								"detail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create resource",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"code\":\"test_resource\",\n    \"label\":\"This is a test label\",\n    \"description\":\"測試一下\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/oauth/api/resource/v1/create",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"oauth",
+								"api",
+								"resource",
+								"v1",
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "scope",
+			"item": [
+				{
+					"name": "Get scope list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/oauth/api/scope/v1/list",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"oauth",
+								"api",
+								"scope",
+								"v1",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get scope detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/oauth/api/scope/v1/2/detail",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"oauth",
+								"api",
+								"scope",
+								"v1",
+								"2",
+								"detail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create scope",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"resourceCode\":\"test_resource\",\n    \"scopeCode\":\"test.readonly\",\n    \"label\":\"測試scope\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/oauth/api/scope/v1/create",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"oauth",
+								"api",
+								"scope",
+								"v1",
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
