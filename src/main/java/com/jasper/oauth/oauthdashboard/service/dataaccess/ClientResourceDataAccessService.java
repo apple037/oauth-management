@@ -20,7 +20,8 @@ public class ClientResourceDataAccessService {
     return oauthResourceDao.findAllByClientIdIn(clientIdList);
   }
 
-  public Collection<OauthClientResource> saveAll(Collection<OauthClientResource> oauthClientResource) {
+  public Collection<OauthClientResource> saveAll(
+      Collection<OauthClientResource> oauthClientResource) {
     return oauthResourceDao.saveAll(oauthClientResource);
   }
 

@@ -1,6 +1,9 @@
 # Oauth dashboard
 This project is used for oauth permission management.
 
+## Postman collection
+[Postman collection](src/main/resources/postman/OauthManagement.postman_collection.json)
+
 ## Usage
 1. Account management
 2. Role management

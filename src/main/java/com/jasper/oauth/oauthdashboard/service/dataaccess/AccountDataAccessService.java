@@ -14,13 +14,13 @@ import org.springframework.stereotype.Service;
 public class AccountDataAccessService {
   private final AccountDao accountDao;
 
-  public AccountDataAccessService(
-      AccountDao accountDao) {
+  public AccountDataAccessService(AccountDao accountDao) {
     this.accountDao = accountDao;
   }
 
   /**
    * Get all accounts
+   *
    * @param pageable
    * @return
    */
@@ -35,22 +35,24 @@ public class AccountDataAccessService {
    * @return
    */
   public Account getAccount(Integer accountId) {
-   return accountDao
-        .findById(accountId).orElseThrow(() -> new IllegalArgumentException("Account not found"));
+    return accountDao
+        .findById(accountId)
+        .orElseThrow(() -> new IllegalArgumentException("Account not found"));
   }
 
   /**
    * Get account by username
+   *
    * @param username
    * @return
    */
   public Optional<Account> getAccountByUsername(String username) {
-    return accountDao
-        .findByUserName(username);
+    return accountDao.findByUserName(username);
   }
 
   /**
    * Save account
+   *
    * @param account
    * @return
    */
@@ -60,6 +62,7 @@ public class AccountDataAccessService {
 
   /**
    * Delete account by account id
+   *
    * @param accountId
    */
   public void deleteAccountByAccountId(Integer accountId) {

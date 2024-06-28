@@ -275,8 +275,9 @@ public class AccountService {
   }
 
   /**
-   * Check if account has permission to access the resource
-   * And check if the account has the expected roles and scopes
+   * Check if account has permission to access the resource And check if the account has the
+   * expected roles and scopes
+   *
    * @param request
    * @return
    */
@@ -458,20 +459,23 @@ public class AccountService {
 
   /**
    * Check if the account has the expected roles and scopes
+   *
    * @param request
    * @param response
    * @param checkRes
    * @return
    */
-  private boolean checkRolesAndScopes(CheckPermissionRequest request, SimulateLoginResponse response, CheckPermissionResponse checkRes) {
+  private boolean checkRolesAndScopes(
+      CheckPermissionRequest request,
+      SimulateLoginResponse response,
+      CheckPermissionResponse checkRes) {
     // Check roles and list missing roles
     List<String> missingRoles = new ArrayList<>();
     List<String> matchedRoles = new ArrayList<>();
     for (String role : request.getExpectedRoles()) {
       if (!response.getRoleCodeList().contains(role)) {
         missingRoles.add(role);
-      }
-      else {
+      } else {
         matchedRoles.add(role);
       }
     }
@@ -483,8 +487,7 @@ public class AccountService {
     for (String scope : request.getExpectedScopes()) {
       if (!response.getScopeCodeList().contains(scope)) {
         missingScopes.add(scope);
-      }
-      else {
+      } else {
         matchedScopes.add(scope);
       }
     }

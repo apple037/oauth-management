@@ -8,7 +8,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import java.time.LocalDateTime;
 import lombok.Data;
-import org.springframework.boot.autoconfigure.web.WebProperties.Resources.Chain.Strategy;
 
 @Data
 @Entity

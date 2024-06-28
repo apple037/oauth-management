@@ -20,7 +20,8 @@ public class ClientGrantTypesDataAccessService {
     return oauthClientGrantTypesDao.findAllByClientId(clientId);
   }
 
-  public Collection<OauthClientGrantTypes> saveAll(Collection<OauthClientGrantTypes> oauthClientGrantTypes) {
+  public Collection<OauthClientGrantTypes> saveAll(
+      Collection<OauthClientGrantTypes> oauthClientGrantTypes) {
     return oauthClientGrantTypesDao.saveAll(oauthClientGrantTypes);
   }
 

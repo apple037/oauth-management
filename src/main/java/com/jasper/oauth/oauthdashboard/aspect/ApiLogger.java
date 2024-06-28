@@ -42,7 +42,10 @@ public class ApiLogger {
   }
 
   private RequestMethod getRequestType(JoinPoint joinPoint) {
-    Annotation[] annotations = ((org.aspectj.lang.reflect.MethodSignature) joinPoint.getSignature()).getMethod().getAnnotations();
+    Annotation[] annotations =
+        ((org.aspectj.lang.reflect.MethodSignature) joinPoint.getSignature())
+            .getMethod()
+            .getAnnotations();
 
     for (Annotation annotation : annotations) {
       if (annotation instanceof RequestMapping requestMapping) {
@@ -62,13 +65,13 @@ public class ApiLogger {
   }
 
   private void requestLog(Object[] args, RequestMethod requestMethod) {
-    StringBuilder logMessage = new StringBuilder("[ApiLogger][" + requestMethod.name() + "][Parameters] ");
+    StringBuilder logMessage =
+        new StringBuilder("[ApiLogger][" + requestMethod.name() + "][Parameters] ");
     for (Object arg : args) {
       logMessage.append(arg.toString()).append(", ");
     }
     // remove last comma
-    if (!logMessage.isEmpty())
-      logMessage.deleteCharAt(logMessage.length() - 2);
+    if (!logMessage.isEmpty()) logMessage.deleteCharAt(logMessage.length() - 2);
 
     log.debug(logMessage.toString());
   }
